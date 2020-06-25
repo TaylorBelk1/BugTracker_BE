@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const jwt = require("../../jwtGen");
 const dbHelper = require("../../database/helpers/adminUsersHelper");
 
 
@@ -27,9 +28,14 @@ router.post("/create-admin", async(req, res) => {
         user.password = hashedPass;
 
         dbHelper.addAdmin(user).then(newUser => {
-            res.status(201).json(newUser)
+            const token = jwt.generateToken(newUser)
+            console.log(token)
+            res.status(201).json({
+                newUser,
+                token
+            })
         }).catch(err => {
-            res.status(500).json(err);
+            res.status(500).json({err, message: "unable to add admin"});
         })
     }
 })
