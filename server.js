@@ -10,6 +10,7 @@ server.use(express.json());
 
 const adminUserRoutes = require("./api/adminUsers/adminUserRoutes");
 const ticketRoutes = require('./api/tickets/ticketRoutes');
+const noteRoutes = require('./api/tickets/noteRoutes');
 
 server.get("/", (req, res) => {
     res.status(200).json("Welcome")
@@ -18,5 +19,6 @@ server.get("/", (req, res) => {
 server.use('/admin', adminUserRoutes);
 server.use('/api', authToken);
 server.use('/api/tickets', ticketRoutes);
+server.use('/api/notes', noteRoutes);
 
 module.exports = server;

@@ -18,7 +18,8 @@ exports.up = function(knex, Promise) {
             .notNullable()
             .onDelete("CASCADE")
             .onUpdate("CASCADE");
-        t.timestamp('created_at', { useTz: true });
+        t.timestamp('created_at', { useTz: true })
+          .defaultTo(knex.fn.now());;
       });
 };
 

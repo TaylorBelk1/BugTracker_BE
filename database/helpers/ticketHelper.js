@@ -2,17 +2,44 @@ const db = require("../dbConfig.js");
 const notesHelper = require("./ticketNotesHelper");
 
 module.exports = {
-    getTicketsAssignedToUser
+    getTicketsAssignedToUser,
+    createNewTicket,
+    updateTicket,
+    deleteTicket
 }
 
-// async function getTicketsAssignedToUser(username) {
-//     let tickets = await db("tickets").where("assigned_to", username);
-//     let ticketsAndNotes = tickets.map(async t => {
-//         t.notes = await notesHelper.getNotesForTicketId(t.id);
-//     })
-//     return ticketsAndNotes
-// }
-
+// expects { username: "" }
 async function getTicketsAssignedToUser(username) {
     return await db("tickets").where("assigned_to", username)
+}
+
+// expects {
+//  name: "",
+// description: "",
+// created_by: "",
+// assigned_to: "" }
+// timestamp will auto generate
+async function createNewTicket(ticket) {
+    return await db("tickets")
+        .returning('id')
+        .insert(ticket);
+}
+
+// expects {
+//  name: "",
+// description: "",
+// created_by: "",
+// assigned_to: "" }
+// and ticket id
+// timestamp will auto generate
+async function updateTicket(ticket, id) {
+    return await db("tickets")
+        .returning('id')
+        .where({ id })
+        .update(ticket);
+}
+
+// expects { id: (int) }
+async function deleteTicket(id) {
+    return await db("tickets").where({ id }).delete();
 }
