@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           description: "This is a test ticket. Inserting random information now thanks",
           created_by: "testuser",
           assigned_to: "tbelk1234",
-          created_at: Date.now()
+          created_at: Date.now().toString()
         },
         {
           id: 2, 
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           description: "This is another test ticket. Inserting random information now thanks",
           created_by: "testuser",
           assigned_to: "tbelk1234",
-          created_at: Date.now()
+          created_at: Date.now().toString()
         },
       ]);
     });

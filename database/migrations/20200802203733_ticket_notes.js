@@ -2,8 +2,9 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable("ticket_notes", t => {
         t.increments();
-        t.timestamp('created_at', { useTz: true })
-        .defaultTo(knex.fn.now());
+        t
+            .text("created_at", 255)
+            .notNullable();
         t
             .text("created_by", 255)
             .references("username")
