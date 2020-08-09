@@ -15,7 +15,7 @@ router.post("/getNotesForTicket", async(req, res) => {
     let ticket_id = req.body.ticket_id;
 
     notesHelper.getNotesForTicketId(ticket_id).then(notes => {
-        if (notes.length === 0) res.status(400).json({message: errors.noTicketsForNote});
+        if (!notes) res.status(400).json({message: errors.noTicketsForNote});
         else res.status(200).json(notes)
     }).catch(err => {
         res.status(500).json({err, message: errors.cantGetNotes})
