@@ -8,6 +8,7 @@ module.exports = {
 }
 
 async function getNotesForTicketId(id) {
+    console.log(id)
     return await db("ticket_notes").where("ticket_id", id);
 }
 
