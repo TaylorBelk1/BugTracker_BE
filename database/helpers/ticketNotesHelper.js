@@ -7,9 +7,9 @@ module.exports = {
     deleteNote
 }
 
-async function getNotesForTicketId(id) {
-    console.log(id)
-    return await db("ticket_notes").where("ticket_id", id);
+async function getNotesForTicketId(ticket_id) {
+    console.log(ticket_id)
+    return await db("ticket_notes").where({ticket_id});
 }
 
 async function createNewNote(note) {
