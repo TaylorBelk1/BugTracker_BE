@@ -19,7 +19,7 @@ exports.up = function(knex, Promise) {
             .onDelete("CASCADE")
             .onUpdate("CASCADE");
         t.timestamp('created_at', { useTz: true })
-          .defaultTo(knex.fn.now());;
+          .defaultTo(knex.fn.now());
       });
 };
 
