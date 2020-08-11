@@ -12,6 +12,13 @@ exports.seed = function(knex, Promise) {
           first_name: 'John',
           last_name: 'Doe',
           email: 'TestUser1@gmail.com',
+        },
+        {
+          username: "tbelk1234",
+          password: "password1",
+          first_name: "Taylor",
+          last_name: "Belk",
+          email: "tbelk1234@gmail.com"
         }
       ]);
     });
