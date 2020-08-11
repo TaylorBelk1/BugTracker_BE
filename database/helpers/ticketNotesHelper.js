@@ -9,7 +9,7 @@ module.exports = {
 
 async function getNotesForTicketId(ticket_id) {
     console.log(ticket_id)
-    let notes = await db("ticket_notes").where({ticket_id});
+    let notes = await db("ticket_notes").where('ticket_id', ticket_id);
     console.log(notes);
     return notes
 }
