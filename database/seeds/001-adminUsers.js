@@ -14,6 +14,7 @@ exports.seed = function(knex, Promise) {
           email: 'TestUser1@gmail.com',
         },
         {
+          id: 2,
           username: "tbelk1234",
           password: "password1",
           first_name: "Taylor",
