@@ -6,7 +6,6 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('tickets').insert([
         {
-          id: 1, 
           name: 'Test ticket',
           description: "This is a test ticket. Inserting random information now thanks",
           created_by: "testuser",
@@ -14,7 +13,6 @@ exports.seed = function(knex, Promise) {
           created_at: Date.now().toString()
         },
         {
-          id: 2, 
           name: 'Test ticket 2',
           description: "This is another test ticket. Inserting random information now thanks",
           created_by: "testuser",
