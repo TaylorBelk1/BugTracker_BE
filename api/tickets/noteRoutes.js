@@ -13,7 +13,7 @@ const errors = {
 
 router.post("/getNotesForTicket", async(req, res) => {
     let ticket_id = req.body.ticket_id;
-
+    console.log("TicketId: ", ticket_id)
     notesHelper.getNotesForTicketId(ticket_id).then(notes => {
         if (!notes) res.status(400).json({message: errors.noTicketsForNote});
         else res.status(200).json(notes)
