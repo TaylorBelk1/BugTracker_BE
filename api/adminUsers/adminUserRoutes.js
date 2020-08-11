@@ -53,6 +53,7 @@ router.post("/admin-login", async(req, res) => {
     // grab user from database by the user name
     dbHelper.getAdminByUsername(username).then(async user => {
         // Check that pw matches
+        console.log(user)
         if(bcrypt.compareSync(password, user.password)) {
             // grab the user's tickets and create a token
             console.log("password matches")
