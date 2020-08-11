@@ -49,15 +49,16 @@ router.post("/create-admin", async(req, res) => {
 router.post("/admin-login", async(req, res) => {
     // pull user name and password from request body
     let {username, password} = req.body;
-    
+    console.log(username, password)
     // grab user from database by the user name
     dbHelper.getAdminByUsername(username).then(async user => {
         // Check that pw matches
         if(bcrypt.compareSync(password, user.password)) {
             // grab the user's tickets and create a token
+            console.log("password matches")
             let tickets = await ticketHelper.getTicketsAssignedToUser(username);
             const token = jwt.generateToken(user)
-            
+            console.log(user, tickets)
             res.status(200).json({
                 user,
                 tickets,
